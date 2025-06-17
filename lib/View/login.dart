@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Controller/Database.dart';
 import '../Model/User.dart';
+import 'menu.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -31,6 +32,12 @@ class _LoginScreenState extends State<LoginScreen> {
       if (isValidUser != null) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Login realizado com sucesso!')),
+        );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MenuScreen(user: isValidUser!),
+          ),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
